@@ -1,0 +1,37 @@
+class Solution(object):
+    def findComplement(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        l1 = []
+        a = 0
+        while(num>0):
+            a = num%2
+            l1.append(a)
+            num =num//2
+
+
+
+        for i in range(0,len(l1)):
+            if(l1[i]==0):
+                l1[i]=1
+            else:
+                l1[i]=0
+
+
+        s = [str(i) for i in l1]
+        res = int("".join(s)) 
+        b = 0
+        c = 0
+        j = 0
+        while(res>0):
+            b = res%10
+            res = res//10
+            c = b*pow(2,j)
+            j+=1
+        return c
+
+        
+        
+        
