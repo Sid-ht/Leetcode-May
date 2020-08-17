@@ -1,0 +1,24 @@
+class Solution(object):
+    def canConstruct(self, ransomNote, magazine):
+        """
+        :type ransomNote: str
+        :type magazine: str
+        :rtype: bool
+        """
+        #return not collections.Counter(ransomNote) - collections.Counter(magazine)
+        
+        d = {}
+        for char in magazine:
+            if char not in d:
+                d[char]=1
+            else:
+                d[char]+=1
+        
+        for i in ransomNote:
+            if i in d:
+                d[i]-=1
+                if d[i]<0:
+                    return False
+            else:
+                return False
+        return True
